@@ -22,9 +22,6 @@ export default function MarcaEntrevista() {
       navigate("/aprova-candidato");
     } catch (error) {
       console.log(error);
-      if (error.response.status === 409) {
-        setError("O candidato já iniciou o processo, favor usar outro nome");
-      }
       if (error.response.status === 404) {
         setError("Candidato não encontrado");
       }

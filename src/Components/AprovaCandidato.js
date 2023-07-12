@@ -16,14 +16,14 @@ export default function AprovaCandidato() {
 
     try {
       const URL = "http://localhost:8080/api/v1/hiring/approve";
-      const response = await axios.post(URL, { codCandidato });
+      await axios.post(URL, { codCandidato });
 
-      console.log(response.data);
+      alert(`Candidado com codigo ${codCandidato} foi aprovado!`);
       navigate("/aprovados");
     } catch (error) {
       console.log(error);
-      if (error.response.status === 409) {
-        setError("O candidato já iniciou o processo, favor usar outro nome");
+      if (error.response.status === 400) {
+        setError("Candidato não está na fase de qualificados");
       }
       if (error.response.status === 404) {
         setError("Candidato não encontrado");

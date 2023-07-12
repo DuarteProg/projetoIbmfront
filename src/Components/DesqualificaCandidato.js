@@ -1,11 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 export default function DesqualificaCandidato() {
   const [codCandidato, setCodCandidato] = useState(0);
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   function handleChange(event) {
     setCodCandidato(event.target.value);
@@ -16,10 +14,9 @@ export default function DesqualificaCandidato() {
 
     try {
       const URL = "http://localhost:8080/api/v1/hiring/disqualify";
-      const response = await axios.post(URL, { codCandidato });
+      await axios.post(URL, { codCandidato });
 
-      console.log(response.data);
-      alert(`Candidato com ID ${codCandidato} foi desclassificado`);
+      alert(`Candidato com ID ${codCandidato} foi desclassificado!`);
     } catch (error) {
       console.log(error);
       if (error.response.status === 404) {
