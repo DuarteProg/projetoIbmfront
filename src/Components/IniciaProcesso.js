@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function IniciaProcesso() {
   const [nome, setNome] = useState("");
@@ -16,7 +17,7 @@ export default function IniciaProcesso() {
 
     try {
       const URL = "http://localhost:8080/api/v1/hiring/start";
-      const response = await axios.post(URL, { nome });
+      await axios.post(URL, { nome });
 
       alert(`Candidato ${nome} adicionado!`);
       navigate("/marca-entrevista");
@@ -29,6 +30,11 @@ export default function IniciaProcesso() {
 
   return (
     <>
+      <div className="separador">
+        <Link to={`/desqualifica-candidato`}>
+          <h3>Clique aqui para desqualificar candidato</h3>{" "}
+        </Link>{" "}
+      </div>
       <h1>Fase Inicial</h1>
       <h2>Digite o nome do candidato que irá para fase de entrevista</h2>
       {error && <p>{error}</p>}

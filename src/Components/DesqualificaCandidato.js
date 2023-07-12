@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function DesqualificaCandidato() {
   const [codCandidato, setCodCandidato] = useState(0);
@@ -27,6 +28,11 @@ export default function DesqualificaCandidato() {
 
   return (
     <>
+      <div className="separador">
+        <Link to={`/`}>
+          <h3>Clique aqui para retornar a tela de Iniciar Processo</h3>{" "}
+        </Link>
+      </div>
       <h1>Deseja Exluir algum candidato?</h1>
       <h2>Digite o codigo do candidato que irá ser desclassificado</h2>
       {error && <p>{error}</p>}

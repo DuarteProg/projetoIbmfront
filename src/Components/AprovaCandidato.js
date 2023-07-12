@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function AprovaCandidato() {
   const [codCandidato, setCodCandidato] = useState(0);
@@ -33,6 +34,11 @@ export default function AprovaCandidato() {
 
   return (
     <>
+      <div className="separador">
+        <Link to={`/desqualifica-candidato`}>
+          <h3>Clique aqui para desqualificar candidato</h3>{" "}
+        </Link>{" "}
+      </div>
       <h1>Terceira Fase: Aprovar</h1>
       <h2>Digite o codigo do candidato que irá para lista de aprovados</h2>
       {error && <p>{error}</p>}
